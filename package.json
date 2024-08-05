@@ -1,0 +1,17 @@
+
+{
+  "name": "Macro Calculator",
+  "version": "1.0.0",
+  "description": "Learn your proper nutritional Macro's to acheive weight loss/muscle gain",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "mysql2": "^3.2.0",
+    "nodemailer": "^6.9.0",
+    "twilio": "^4.12.0"
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="asset/style.css">
+    <link>
+    <title>Macro Calculator</title>
+</head>
+
+
+<body>
+        <h1>Macro Calculator</h1>
+        <form id="macroForm">
+            <div class="form-group">
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" name="weight" required min="0">
+                <select id="weightUnit" name="weightUnit">
+                    <option value="kg">kg</option>
+                    <option value="lbs">lbs</option>
+                </select>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <div class="form-group hidden" id="heightFtInGroup">
+                    <label for="heightFtIn">Height (feet/inches):</label>
+                    <div class="input-group">
+                        <input type="number" id="heightFt" name="heightFt" placeholder="feet" required min="0">
+                        <input type="number" id="heightIn" name="heightIn" placeholder="inches" required min="0">
+                    </div>
+                </div>
+            </div>
+            
+           
+            <br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required min="0">
+            <br>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <br>
+            <div class="form-group">
+                <label for="activityLevel">Activity Level:</label>
+                <select id="activityLevel" name="activityLevel" required>
+                    <option value="sedentary">Sedentary (little or no exercise)</option>
+                    <option value="light">Lightly active (light exercise/sports 1-3 days/week)</option>
+                    <option value="moderate">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                    <option value="active">Active (hard exercise/sports 6-7 days a week)</option>
+                    <option value="veryActive">Very active (very hard exercise/sports & physical job)</option>
+                </select>
+            </div>
+            <br>
+            <label for="goal">Goal:</label>
+            <select id="goal" name="goal" required>
+                <option value="maintenance">Maintenance</option>
+                <option value="loss">Loss</option>
+                <option value="gain">Gain</option>
+            </select>
+            <br>
+            <button type="button" onclick="calculateAndDisplayPlan()">Calculate</button>
+        </form>
+    
+        <h2>Daily Macros</h2>
+        <div id="macrosDisplay"></div>
+    
+        <h2>Meal Plan</h2>
+        <div id="mealPlanDisplay"></div>
+    
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Receive Your Results</h2>
+            <div class="form-group">
+                <label for="emailOrCell">Email or Cell Number:</label>
+                <input type="text" id="emailOrCell" name="emailOrCell" required>
+            </div>
+            <button onclick="submitResults()">Submit</button>
+        </div>
+    </div>
+
+
+
+    <script src="asset/script.js"></script>
+</body>
+</html>

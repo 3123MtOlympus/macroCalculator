@@ -21,22 +21,18 @@ Ensure you have the following installed:
 - MySQL
 
 ## Clone the Repository
-
 <code>
 git clone https://github.com/3123MtOlympus/macro-calculator.git
 cd macro-calculator
 <code>
 
-
 ## Install Dependencies
-
 <code>
 npm install
 <code>
 
 ## Configure Environment
 Create a .env file in the root directory with the following content:
-
 <code>
 DB_HOST=localhost
 DB_USER=root
@@ -87,7 +83,7 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Contact
+# Contact
 For any inquiries, please contact:
 
 Email: realchrislondon@gmail.com

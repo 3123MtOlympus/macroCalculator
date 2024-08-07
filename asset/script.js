@@ -1,164 +1,73 @@
-function toggleHeightInput() {
-    const heightUnit = document.getElementById('heightUnit').value;
-    document.getElementById('heightCmGroup').classList.add('hidden');
-    document.getElementById('heightFtInGroup').classList.add('hidden');
-    if (heightUnit === 'cm') {
-        document.getElementById('heightCmGroup').classList.remove('hidden');
-    } else {
-        document.getElementById('heightFtInGroup').classList.remove('hidden');
-    }
-}
+// script.js
 
-function showModal() {
-    if (validateInputs()) {
-        document.getElementById('myModal').style.display = "block";
-    }
-}
-
-function closeModal() {
-    document.getElementById('myModal').style.display = "none";
-}
-
-function validateInputs() {
-    let weight = parseFloat(document.getElementById('weight').value);
-    const heightUnit = document.getElementById('heightUnit').value;
-    const heightCm = heightUnit === 'cm' ? parseFloat(document.getElementById('heightCm').value) : null;
-    const heightFt = heightUnit === 'feetInches' ? parseFloat(document.getElementById('heightFt').value) : null;
-    const heightIn = heightUnit === 'feetInches' ? parseFloat(document.getElementById('heightIn').value) : null;
-    const age = parseInt(document.getElementById('age').value);
-
-    if (isNaN(weight) || weight <= 0) {
-        alert('Please enter a valid weight greater than 0.');
-        return false;
-    }
-
-    if (heightUnit === 'cm' && (isNaN(heightCm) || heightCm <= 0)) {
-        alert('Please enter a valid height in cm greater than 0.');
-        return false;
-    } else if (heightUnit === 'feetInches' && (isNaN(heightFt) || heightFt < 0 || isNaN(heightIn) || heightIn < 0)) {
-        alert('Please enter a valid height in feet and inches, where both values are greater than or equal to 0.');
-        return false;
-    }
-
-    if (isNaN(age) || age <= 0) {
-        alert('Please enter a valid age greater than 0.');
-        return false;
-    }
-
-    return true;
-}
-
-function calculateMacros() {
-    let weight = parseFloat(document.getElementById('weight').value);
-    const heightUnit = document.getElementById('heightUnit').value;
-    let heightCm;
-    const heightFt = parseFloat(document.getElementById('heightFt').value);
-    const heightIn = parseFloat(document.getElementById('heightIn').value);
-    const age = parseInt(document.getElementById('age').value);
+function calculateAndDisplayPlan() {
+    // Get input values
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+    const age = parseFloat(document.getElementById('age').value);
+    const gender = document.getElementById('gender').value;
     const activityLevel = document.getElementById('activityLevel').value;
-    const weightUnit = document.getElementById('weightUnit').value;
+    const goal = document.getElementById('goal').value;
 
-    if (heightUnit === 'cm') {
-        heightCm = parseFloat(document.getElementById('heightCm').value);
-        if (isNaN(heightCm) || heightCm <= 0) {
-            alert('Please enter a valid height in cm.');
-            return;
-        }
-    } else {
-        if (isNaN(heightFt) || isNaN(heightIn) || heightFt < 0 || heightIn < 0) {
-            alert('Please enter a valid height in feet and inches.');
-            return;
-        }
-        heightCm = heightFt * 30.48 + heightIn * 2.54;
-    }
-
-    // Convert weight to kg if needed
-    if (weightUnit === 'lbs') {
-        weight = weight * 0.453592;
-    }
-
-    // Calculate BMR (Basal Metabolic Rate) using the Mifflin-St Jeor Equation
-    const bmr = 10 * weight + 6.25 * heightCm - 5 * age + 5; // For men
-    // const bmr = 10 * weight + 6.25 * heightCm - 5 * age - 161; // For women
-
-    // Calculate TDEE (Total Daily Energy Expenditure)
-    let activityMultiplier;
-    switch (activityLevel) {
-        case 'sedentary':
-            activityMultiplier = 1.2;
-            break;
-        case 'light':
-            activityMultiplier = 1.375;
-            break;
-        case 'moderate':
-            activityMultiplier = 1.55;
-            break;
-        case 'active':
-            activityMultiplier = 1.725;
-            break;
-        case 'veryActive':
-            activityMultiplier = 1.9;
-            break;
-        default:
-            activityMultiplier = 1.2;
-    }
-
-    const tdee = bmr * activityMultiplier;
-    const tdeeForWeightLoss = tdee - 1000; // Caloric deficit for 2 pounds weight loss per week
-
-    // Calculate macros
-    const protein = weight * 2; // Protein intake in grams (2 grams per kg of body weight)
-    const fat = weight * 0.9; // Fat intake in grams (0.9 grams per kg of body weight)
-    const carbs = (tdeeForWeightLoss - (protein * 4 + fat * 9)) / 4; // Carbohydrates intake
-
-    // Display results
-    const resultText = `
-        <h2>Recommended Macros:</h2>
-        <p>Protein: ${protein.toFixed(2)} grams</p>
-        <p>Fat: ${fat.toFixed(2)} grams</p>
-        <p>Carbohydrates: ${carbs.toFixed(2)} grams</p>
-        <p>Daily Caloric Intake: ${tdeeForWeightLoss.toFixed(2)} calories</p>
-    `;
-    document.getElementById('result').innerHTML = resultText;
-
-    // Close modal after submission
-    closeModal();
-}
-
-function submitResults() {
-    // Handle form submission for email or cell number
-    const emailOrCell = document.getElementById('emailOrCell').value;
-    if (!emailOrCell) {
-        alert('Please enter your email or cell number.');
+    // Validate inputs
+    if (weight <= 0 || height <= 0 || age <= 0) {
+        alert("All inputs must be above 0.");
         return;
     }
-    // Optionally, you can add logic to send results to the provided email or cell number here
 
-    // Perform calculations and display results
-    calculateMacros();
+    // Calculate BMR (Basal Metabolic Rate)
+    let bmr;
+    if (gender === 'male') {
+        bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+    } else {
+        bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+    }
+
+    // Calculate TDEE (Total Daily Energy Expenditure)
+    const activityMultipliers = {
+        sedentary: 1.2,
+        light: 1.375,
+        moderate: 1.55,
+        active: 1.725,
+        very_active: 1.9
+    };
+    const tdee = bmr * activityMultipliers[activityLevel];
+
+    // Adjust TDEE based on goal
+    let calories;
+    if (goal === 'maintenance') {
+        calories = tdee;
+    } else if (goal === 'loss') {
+        calories = tdee - 1000; // Approx 2 lbs per week loss
+    } else {
+        calories = tdee + 500; // Approx 1 lb per week gain
+    }
+
+    // Calculate macros
+    const protein = weight * 2.2; // Protein intake in grams (1g per pound of body weight)
+    const fat = (calories * 0.25) / 9; // Fat intake in grams (25% of total calories)
+    const carbs = (calories - (protein * 4) - (fat * 9)) / 4; // Remaining calories for carbs
+
+    // Display macros
+    document.getElementById('macrosDisplay').innerHTML = `
+        <p>Calories: ${calories.toFixed(2)} kcal</p>
+        <p>Protein: ${protein.toFixed(2)} g</p>
+        <p>Fat: ${fat.toFixed(2)} g</p>
+        <p>Carbohydrates: ${carbs.toFixed(2)} g</p>
+    `;
+
+    // Generate meal plan
+    const meals = generateMealPlan(calories, protein, fat, carbs);
+    document.getElementById('mealPlanDisplay').innerHTML = meals;
 }
 
-function generateMealPlan(macros) {
-    // Number of meals
-    const meals = 3; // Breakfast, lunch, dinner
-
-    const mealsPlan = {
-        breakfast: {
-            protein: (macros.protein / meals).toFixed(2),
-            fat: (macros.fat / meals).toFixed(2),
-            carbs: (macros.carbs / meals).toFixed(2)
-        },
-        lunch: {
-            protein: (macros.protein / meals).toFixed(2),
-            fat: (macros.fat / meals).toFixed(2),
-            carbs: (macros.carbs / meals).toFixed(2)
-        },
-        dinner: {
-            protein: (macros.protein / meals).toFixed(2),
-            fat: (macros.fat / meals).toFixed(2),
-            carbs: (macros.carbs / meals).toFixed(2)
-        }
-    };
-
-    return mealsPlan;
+function generateMealPlan(calories, protein, fat, carbs) {
+    // Simple meal plan example
+    const meals = `
+        <p>Meal 1: ${protein * 0.3}g Protein, ${carbs * 0.3}g Carbs, ${fat * 0.3}g Fat</p>
+        <p>Meal 2: ${protein * 0.3}g Protein, ${carbs * 0.3}g Carbs, ${fat * 0.3}g Fat</p>
+        <p>Meal 3: ${protein * 0.2}g Protein, ${carbs * 0.2}g Carbs, ${fat * 0.2}g Fat</p>
+        <p>Snack: ${protein * 0.2}g Protein, ${carbs * 0.2}g Carbs, ${fat * 0.2}g Fat</p>
+    `;
+    return meals;
 }

@@ -1,53 +1,33 @@
 /* General Styles */
-body {
-    font-family: "kanit";
+body,
+html {
+    font-family: "Kanit", sans-serif;
     color: #333;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-/* General Styles */
-body, html {
+    background-color: #c0bcbc;
     margin: 0;
     padding: 0;
     height: 100%;
     overflow: hidden;
 }
 
-/* Video Background */
-.video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: auto;
-    height: 75%;
-    overflow: hidden;
-    z-index: -1;
-}
-
-#background-video {
-    width: auto;
-    height: auto;
-    object-fit: cover;
-}
-
 /* Content Styling */
 .content {
-    position: absolute;
+    position: relative;
     z-index: 1;
+    margin: 0 auto;
     color: #fff;
     text-align: center;
     padding: 20px;
 }
 
-
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     text-align: center;
     color: #333;
     font-weight: 700;
     margin-bottom: 20px;
-    text-shadow:  3px 3px 3px whitesmoke;
+    text-shadow: 3px 3px 13px whitesmoke;
 }
 
 h1 {
@@ -63,40 +43,61 @@ h3 {
     font-size: 1.5em;
 }
 
+h4 {
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: small;
+    font-family: "kantos";
+    color: #555;
+    border: 1px solid #333;
+    background-color: aliceblue;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+p {
+    font-size: x-large;
+    text-align: center;
+    color: #333;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 /* Form Styling */
 form {
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 14px 8px rgba(238, 247, 2, 0.1);
     padding: 20px;
     max-width: 600px;
     margin: 20px auto;
+    color: #333;
 }
 
 .form-group {
     margin-bottom: 15px;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
+
 }
-.form-group input, .form-group select {
+
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
 }
+
 .form-group .input-group {
     display: flex;
     gap: 10px;
 }
+
 .form-group .input-group input {
     flex: 1;
-}
-
-label {
-    display: block;
-    font-weight: 600;
-    margin: 10px 0 5px;
 }
 
 input[type="text"],
@@ -175,112 +176,84 @@ button:hover {
     max-width: 600px;
 }
 
-
+/* Kanit Font Weights */
 .kanit-thin {
-    font-family: "Kanit", sans-serif;
     font-weight: 100;
-    font-style: normal;
-  }
-  
-  .kanit-extralight {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-extralight {
     font-weight: 200;
-    font-style: normal;
-  }
-  
-  .kanit-light {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-light {
     font-weight: 300;
-    font-style: normal;
-  }
-  
-  .kanit-regular {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-regular {
     font-weight: 400;
-    font-style: normal;
-  }
-  
-  .kanit-medium {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-medium {
     font-weight: 500;
-    font-style: normal;
-  }
-  
-  .kanit-semibold {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-semibold {
     font-weight: 600;
-    font-style: normal;
-  }
-  
-  .kanit-bold {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-bold {
     font-weight: 700;
-    font-style: normal;
-  }
-  
-  .kanit-extrabold {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-extrabold {
     font-weight: 800;
-    font-style: normal;
-  }
-  
-  .kanit-black {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-black {
     font-weight: 900;
-    font-style: normal;
-  }
-  
-  .kanit-thin-italic {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-thin-italic {
     font-weight: 100;
     font-style: italic;
-  }
-  
-  .kanit-extralight-italic {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-extralight-italic {
     font-weight: 200;
     font-style: italic;
-  }
-  
-  .kanit-light-italic {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-light-italic {
     font-weight: 300;
     font-style: italic;
-  }
-  
-  .kanit-regular-italic {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-regular-italic {
     font-weight: 400;
     font-style: italic;
-  }
-  
-  .kanit-medium-italic {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-medium-italic {
     font-weight: 500;
     font-style: italic;
-  }
-  
-  .kanit-semibold-italic {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-semibold-italic {
     font-weight: 600;
     font-style: italic;
-  }
-  
-  .kanit-bold-italic {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-bold-italic {
     font-weight: 700;
     font-style: italic;
-  }
-  
-  .kanit-extrabold-italic {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-extrabold-italic {
     font-weight: 800;
     font-style: italic;
-  }
-  
-  .kanit-black-italic {
-    font-family: "Kanit", sans-serif;
+}
+
+.kanit-black-italic {
     font-weight: 900;
     font-style: italic;
-  }
-  
+}

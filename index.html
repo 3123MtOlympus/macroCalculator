@@ -4,60 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="asset/style.css">
-    <link>
     <title>Macro Calculator</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-
+    <link rel="stylesheet" href="asset/style.css">
 </head>
 
-
 <body>
-     <!-- Background Video -->
-     <div class="video-background">
-        <video autoplay muted loop id="background-video">
-            <source src="asset/video/Untitled design (1).mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
 
-        <h1><span>PerkzofWerk</span> Macro Calculator</h1>
+
+    <!-- Main Content -->
+    <div class="content">
+        
+        <h1>PerkzofWerk Macro Calculator</h1>
+            <p><i>Macronutrition made simple</i></p>
+            <hr>
+            <h4>The only way to achieve a goal, is to have a plan. Get your macronutritional plan here today! After filling
+            out the form below, you will receive a nutritional breakdown of your suggested daily intake to gain, loss or
+            maintain weight.</h4>
         <form id="macroForm">
+            <!-- Form inputs here -->
+
+            <!-- Weight -->
             <div class="form-group">
                 <label for="weight">Weight:</label>
-                <input type="number" id="weight" name="weight" required min="0">
-                <select id="weightUnit" name="weightUnit">
-                    <option value="kg">kg</option>
-                    <option value="lbs">lbs</option>
-                </select>
+                <input type="number" id="weight" name="weight" placeholder="lbs" required min="0">
             </div>
 
-            <br>
-
-            <div class="form-group">
-                <div class="form-group hidden" id="heightFtInGroup">
-                    <label for="heightFtIn">Height (feet/inches):</label>
-                    <div class="input-group">
-                        <input type="number" id="heightFt" name="heightFt" placeholder="feet" required min="0">
-                        <input type="number" id="heightIn" name="heightIn" placeholder="inches" required min="0">
-                    </div>
+            <!-- Height -->
+            <div class="form-group hidden" id="heightFtInGroup">
+                <label for="heightFtIn">Height (feet/inches):</label>
+                <div class="input-group">
+                    <input type="number" id="heightFt" name="heightFt" placeholder="feet" required min="0">
+                    <input type="number" id="heightIn" name="heightIn" placeholder="inches" required min="0">
                 </div>
             </div>
 
+            <!-- Age -->
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required min="0">
+            </div>
 
-            <br>
-
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required min="0">
-            <br>
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-            <br>
+            <!-- Activity -->
             <div class="form-group">
                 <label for="activityLevel">Activity Level:</label>
                 <select id="activityLevel" name="activityLevel" required>
@@ -69,6 +56,16 @@
                 </select>
             </div>
             <br>
+
+            <!-- Gender -->
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <br>
+
+            <!-- Goal -->
             <label for="goal">Goal:</label>
             <select id="goal" name="goal" required>
                 <option value="maintenance">Maintenance</option>
@@ -78,31 +75,15 @@
             <br>
             <button type="button" onclick="calculateAndDisplayPlan()">Calculate</button>
         </form>
-
+<hr>
         <h2>Daily Macros</h2>
         <div id="macrosDisplay"></div>
 
         <h2>Meal Plan</h2>
         <div id="mealPlanDisplay"></div>
+    </div>
 
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2>Receive Your Results</h2>
-                <div class="form-group">
-                    <label for="emailOrCell">Email or Cell Number:</label>
-                    <input type="text" id="emailOrCell" name="emailOrCell" required>
-                </div>
-                <button onclick="submitResults()">Submit</button>
-            </div>
-        </div>
-    
-
-
-
-    <script src="asset/script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

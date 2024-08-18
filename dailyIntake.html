@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Intake</title>
+    <link rel="stylesheet" href="asset/style.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Daily Intake</h1>
+        <div href="#dailyIntake"></div>
+        <div href="#mealPlanDisplay"></div>
+    </div>
+    
+    <!-- <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            // Get query parameters from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const calories = urlParams.get('calories');
+            const protein = urlParams.get('protein');
+            const fat = urlParams.get('fat');
+            const carbs = urlParams.get('carbs');
+
+            // Display macros
+            document.getElementById('macrosDisplay').innerHTML = `
+                <p>Calories: ${calories} kcal</p>
+                <p>Protein: ${protein} g</p>
+                <p>Fat: ${fat} g</p>
+                <p>Carbohydrates: ${carbs} g</p>
+            `;
+
+            // Generate meal plan
+            const meals = generateMealPlan(calories, protein, fat, carbs);
+            document.getElementById('mealPlanDisplay').innerHTML = meals;
+
+            function generateMealPlan(calories, protein, fat, carbs) {
+                // Simple meal plan example
+                return `
+                    <p>Meal 1: ${(protein * 0.3).toFixed(2)}g Protein, ${(carbs * 0.3).toFixed(2)}g Carbs, ${(fat * 0.3).toFixed(2)}g Fat</p>
+                    <p>Meal 2: ${(protein * 0.3).toFixed(2)}g Protein, ${(carbs * 0.3).toFixed(2)}g Carbs, ${(fat * 0.3).toFixed(2)}g Fat</p>
+                    <p>Meal 3: ${(protein * 0.2).toFixed(2)}g Protein, ${(carbs * 0.2).toFixed(2)}g Carbs, ${(fat * 0.2).toFixed(2)}g Fat</p>
+                    <p>Snack: ${(protein * 0.2).toFixed(2)}g Protein, ${(carbs * 0.2).toFixed(2)}g Carbs, ${(fat * 0.2).toFixed(2)}g Fat</p>
+                `;
+            }
+        });
+    </script> -->
+</body>
+</html>
